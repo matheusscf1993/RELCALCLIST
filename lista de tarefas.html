@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Tarefas</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: linear-gradient(45deg, black, rgb(207, 220, 20));
+      font-family: Arial, sans-serif;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column; 
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Matheus Santos Cavalcante Franca Mat..: 2023 0354 7099</h1>
+  <h2>Minha Lista de Tarefas</h2>
+  <input id="task" type="text" placeholder="Adicione uma tarefa">
+  <button onclick="addTask()">Adicionar</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    function addTask() {
+      const taskText = document.getElementById('task').value;
+      if (taskText.trim() === '') {
+        alert('Por favor, insira uma tarefa válida.');
+        return;
+      }
+
+      const taskList = document.getElementById('taskList');
+      const taskItem = document.createElement('li');
+      taskItem.textContent = taskText;
+
+      // Botão de Remover
+      const removeButton = document.createElement('button');
+      removeButton.textContent = 'Remover';
+      removeButton.addEventListener('click', function () {
+        taskList.removeChild(taskItem);
+      });
+
+      // Botão de Editar
+      const editButton = document.createElement('button');
+      editButton.textContent = 'Editar';
+      editButton.addEventListener('click', function () {
+        const editedTask = prompt('Edite a tarefa:', taskItem.textContent);
+        if (editedTask !== null) {
+          taskItem.textContent = editedTask;
+        }
+      });
+
+      taskItem.appendChild(removeButton);
+      taskItem.appendChild(editButton);
+
+      taskList.appendChild(taskItem);
+      document.getElementById('task').value = '';
+    }
+  </script>
+</body>
+</html>

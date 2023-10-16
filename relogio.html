@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Relogio Digital</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: linear-gradient(45deg, black, rgb(207, 220, 20));
+      font-family: Arial, sans-serif;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h1 {
+      margin: 20px 0; 
+      text-align: center;
+      color: #fff;
+    }
+
+    #relogio {
+      
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 350px;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Matheus Santos Cavalcante Franca Mat..: 2023 0354 7099</h1>
+  <div id="relogio"></div>
+  <script>
+    function atualizarRelogio() {
+      const agora = new Date();
+      const horas = agora.getHours().toString().padStart(2, '0');
+      const minutos = agora.getMinutes().toString().padStart(2, '0');
+      const segundos = agora.getSeconds().toString().padStart(2, '0');
+      const horaAtual = `${horas}:${minutos}:${segundos}`;
+      document.getElementById('relogio').textContent = horaAtual;
+    }
+
+    atualizarRelogio(); 
+    setInterval(atualizarRelogio, 1000);
+  </script>
+</body>
+</html>
